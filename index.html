@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learn CSS Animations</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,700' rel='stylesheet'>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header><h1>CSS Flight Survivor</h1></header>
+  <div class="container">
+    <div class="top">
+      <div class="columns">
+        <div class="left">
+          <h2>Emergency 1: Too Slow!</h2>
+          <p>It seems the plane is flying too slowly. <strong>Move the plane across the screen in exactly 3 seconds.</strong> The animation you'll call is <code>moveRight</code>. Your animation should be done using the shorthand syntax. Example: <code>animation: animationName 1.5s forwards;</code>.</p>
+        </div>
+        <div class="right">
+
+          <div id="editor">
+            <div id="css">
+              <pre id="before">.plane {
+  animation: <input id="code" autofocus /></pre>
+              <pre id="after">}</pre>
+            </div>
+            <button id="try-it">Try it</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="clouds">
+        <div class="x1">
+          <div class="cloud"></div>
+        </div>
+
+        <div class="x2">
+          <div class="cloud"></div>
+        </div>
+
+        <div class="x3">
+          <div class="cloud"></div>
+        </div>
+
+        <div class="x4">
+          <div class="cloud"></div>
+        </div>
+
+        <div class="x5">
+          <div class="cloud"></div>
+        </div>
+      </div>
+      <div class="plane"></div>
+    </div>
+  </div>
+
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+<script>
+  window.onload = init;
+
+  var answers = {
+        step1: {
+          answer: "moveRight 3s forwards;",
+          apply_class: "step-one-answer"
+        }
+      },
+      plane   = document.getElementsByClassName("plane")[0],
+      try_it  = document.getElementById("try-it"),
+      code    = document.getElementById("code");
+
+  function tryItHandler() {
+    var val = code.value,
+        answer = answers["step1"]["answer"];
+
+    if (val === answer) {
+      plane.classList.add(answers["step1"]["apply_class"]);
+    }
+  }
+
+  function codeHandler(e) {
+    if (e.keyCode === 13) {
+      tryItHandler();
+    }
+  }
+
+  function bindings() {
+    try_it.addEventListener("click", tryItHandler);
+    code.addEventListener("keyup", codeHandler)
+  }
+
+  function init() {
+    bindings();
+  }
+</script>
+</body>
+</html>
