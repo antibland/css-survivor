@@ -10,13 +10,14 @@
   <header><h1>CSS Flight Survivor</h1></header>
   <div class="container">
     <div class="top">
-      <div class="columns">
+      <section class="columns active" data-level="level-1">
+
         <div class="left">
           <h2>Emergency 1: Too Slow!</h2>
           <p>It seems the plane is flying too slowly. <strong>Move the plane across the screen in exactly 3 seconds.</strong> The animation you'll call is <code>moveRight</code>. Your animation should be done using the shorthand syntax. Example: <code>animation: animationName 1.5s forwards;</code>.</p>
         </div>
-        <div class="right">
 
+        <div class="right">
           <div id="editor">
             <div id="css">
               <pre id="before">.plane {
@@ -25,9 +26,14 @@
             </div>
             <button id="try-it">Try it</button>
           </div>
-
         </div>
-      </div>
+
+      </section>
+
+      <section class="columns" data-level="level-2">
+        <h2>Emergency 2: Avoid the Birds</h2>
+        <p>Large birds pose a serious threat all lives aboard this phony plane. Do something!</p>
+      </section>
     </div>
     <div class="bottom">
       <div class="clouds">
@@ -52,6 +58,8 @@
         </div>
       </div>
       <div class="plane"></div>
+      <div class="mountain"></div>
+      <div class="bird"></div>
     </div>
   </div>
 
@@ -93,17 +101,30 @@
 
   function bindings() {
     try_it.addEventListener("click", tryItHandler);
-    try_it.addEventListener("animationend", cleanBody)
-    code.addEventListener("keyup", codeHandler)
+    try_it.addEventListener("animationend", cleanBody);
+    code.addEventListener("keyup", codeHandler);
+    window.addEventListener("hashchange", hashchangeHandler);
+  }
+
+  function hashchangeHandler() {
+    var hash = location.hash;
+    document.querySelector("section.active").classList.remove("active");
+    document.querySelector("[data-level=" + hash.slice(1) + "]").classList.add("active");
   }
 
   function movePlaneOnScreen() {
     body.classList.add("move-on-screen");
   }
 
-  function init() {
+  function setLevel(level, e) {
+    history.pushState({}, null, '#level-' + level);
+    e.preventDefault();
+  }
+
+  function init(e) {
     bindings();
     movePlaneOnScreen();
+    setLevel(1, e);
   }
 </script>
 </body>
