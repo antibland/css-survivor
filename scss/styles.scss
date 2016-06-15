@@ -86,7 +86,12 @@ strong {
   position: absolute;
   top: 50%;
   left: 0;
-  transform: translateY(calc(-50% - 43px));
+  transition: 2s 1s, transform ease-out;
+  transform: translate(-100%, calc(-50% - 43px));
+
+  .move-on-screen & {
+    transform: translate(0, calc(-50% - 43px));
+  }
 
   &.step-one-answer {
     animation: moveRight 3s linear forwards;
@@ -165,6 +170,10 @@ button {
   border-radius: 4px;
   font-size: 13px;
   cursor: pointer;
+
+  .wrong & {
+    animation: shake 1s linear 2 forwards;
+  }
 }
 
 pre {
@@ -232,5 +241,23 @@ code {
 @keyframes moveRight {
   to {
     margin-left: 100vw;
+  }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
   }
 }

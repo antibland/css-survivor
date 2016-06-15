@@ -67,14 +67,17 @@
       },
       plane   = document.getElementsByClassName("plane")[0],
       try_it  = document.getElementById("try-it"),
-      code    = document.getElementById("code");
+      code    = document.getElementById("code"),
+      body    = document.body;
 
   function tryItHandler() {
-    var val = code.value,
+    var val    = code.value,
         answer = answers["step1"]["answer"];
 
     if (val === answer) {
       plane.classList.add(answers["step1"]["apply_class"]);
+    } else {
+      body.classList.add("wrong");
     }
   }
 
@@ -84,13 +87,23 @@
     }
   }
 
+  function cleanBody() {
+    body.classList.remove("wrong");
+  }
+
   function bindings() {
     try_it.addEventListener("click", tryItHandler);
+    try_it.addEventListener("animationend", cleanBody)
     code.addEventListener("keyup", codeHandler)
+  }
+
+  function movePlaneOnScreen() {
+    body.classList.add("move-on-screen");
   }
 
   function init() {
     bindings();
+    movePlaneOnScreen();
   }
 </script>
 </body>
