@@ -107,9 +107,13 @@
   }
 
   function hashchangeHandler() {
-    var hash        = location.hash,
-        curr_active = document.querySelector("section.active"),
-        next_active = document.querySelector("[data-level=" + hash.slice(1) + "]");
+    var hash  = location.hash,
+        curr_active, next_active;
+
+    if (!hash.length) return;
+
+    curr_active = document.querySelector("section.active"),
+    next_active = document.querySelector("[data-level=" + hash.slice(1) + "]");
 
     if (next_active !== null) {
       curr_active.classList.remove("active");
