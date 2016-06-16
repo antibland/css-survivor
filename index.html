@@ -60,6 +60,7 @@
       <div class="plane"></div>
       <div class="mountain"></div>
       <div class="bird"></div>
+      <div class="announcer"><button id="btn_announce"></button></div>
     </div>
   </div>
 
@@ -67,16 +68,18 @@
 <script>
   window.onload = init;
 
-  var answers = {
+  var answers      = {
         step1: {
           answer: "moveRight 3s forwards;",
           apply_class: "step-one-answer"
         }
       },
-      plane   = document.getElementsByClassName("plane")[0],
-      try_it  = document.getElementById("try-it"),
-      code    = document.getElementById("code"),
-      body    = document.body;
+      plane        = document.getElementsByClassName("plane")[0],
+      try_it       = document.getElementById("try-it"),
+      code         = document.getElementById("code"),
+      body         = document.body,
+      announcer    = document.getElementsByClassName("announcer")[0],
+      btn_announce = document.getElementById("btn_announce");
 
   function tryItHandler() {
     var val    = code.value,
@@ -95,15 +98,20 @@
     }
   }
 
-  function cleanBody() {
-    body.classList.remove("wrong");
+  function cleanBody(clazz) {
+    body.classList.remove(clazz);
   }
 
   function bindings() {
     try_it.addEventListener("click", tryItHandler);
-    try_it.addEventListener("animationend", cleanBody);
+    try_it.addEventListener("animationend", cleanBody.bind(null, 'wrong'));
     code.addEventListener("keyup", codeHandler);
     window.addEventListener("hashchange", hashchangeHandler);
+    announcer.addEventListener("transitionend", function() {
+      setTimeout(function() {
+        cleanBody("announce");
+      }, 1000);
+    });
   }
 
   function hashchangeHandler() {
@@ -125,15 +133,20 @@
     body.classList.add("move-on-screen");
   }
 
-  function setLevel(level, e) {
+  function setLevel(level) {
     history.pushState({}, null, '#level-' + level);
-    e.preventDefault();
+    announceLevel(level);
   }
 
-  function init(e) {
+  function announceLevel(message) {
+    btn_announce.innerHTML = "Level " + message;
+    body.classList.add("announce");
+  }
+
+  function init() {
     bindings();
     movePlaneOnScreen();
-    setLevel(1, e);
+    setLevel("1");
   }
 </script>
 </body>
