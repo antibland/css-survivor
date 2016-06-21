@@ -128,7 +128,7 @@ button {
   border-radius: 4px;
   font-size: 13px;
   cursor: pointer; }
-  .wrong button#try-it {
+  .wrong button.try-it {
     animation: shake 1s linear 2 forwards; }
 
 pre {
@@ -140,7 +140,7 @@ code {
   font-weight: bold;
   background: wheat; }
 
-#code {
+.code {
   display: inline-block;
   width: calc(100% - 130px);
   height: 24px;
@@ -152,13 +152,13 @@ code {
   resize: none;
   overflow: auto; }
 
-#editor, #pre {
+.editor, #pre {
   font-family: 'Source Code Pro', monospace;
   font-size: 16px;
   line-height: 1.5;
   color: #aaa; }
 
-#css {
+.css {
   position: relative;
   padding: 10px;
   background-color: #ddd;

@@ -18,21 +18,34 @@
         </div>
 
         <div class="right">
-          <div id="editor">
-            <div id="css">
-              <pre id="before">.plane {
-  animation: <input id="code" autofocus /></pre>
-              <pre id="after">}</pre>
+          <div class="editor">
+            <div class"css">
+              <pre class"before">.plane {
+  animation: <input class="code" autofocus /></pre>
+              <pre class="after">}</pre>
             </div>
-            <button id="try-it">Try it</button>
+            <button class="try-it">Try it</button>
           </div>
         </div>
 
       </section>
 
       <section class="columns" data-level="level-2">
-        <h2>Emergency 2: Avoid the Birds</h2>
-        <p>Large birds pose a serious threat all lives aboard this phony plane. Do something!</p>
+        <div class="left">
+          <h2>Emergency 2: Avoid the Birds</h2>
+          <p>Large birds pose a serious threat all lives aboard this phony plane. Do something!</p>
+        </div>
+
+        <div class="right">
+          <div class="editor">
+            <div class"css">
+              <pre class"before">.plane {
+  animation: <input class="code" autofocus /></pre>
+              <pre class="after">}</pre>
+            </div>
+            <button class="try-it">Try it</button>
+          </div>
+        </div>
       </section>
     </div>
     <div class="bottom">
@@ -75,8 +88,8 @@
         }
       },
       plane        = document.getElementsByClassName("plane")[0],
-      try_it       = document.getElementById("try-it"),
-      code         = document.getElementById("code"),
+      try_it       = document.getElementsByClassName("try-it")[0],
+      code         = document.getElementsByClassName("code")[0],
       body         = document.body,
       announcer    = document.getElementsByClassName("announcer")[0],
       btn_announce = document.getElementById("btn_announce");
