@@ -98,6 +98,10 @@
     var val    = code.value,
         answer = answers["step1"]["answer"];
 
+    if (val[val.length -1] !== ";") {
+      val += ";"
+    }
+
     if (val === answer) {
       plane.classList.add(answers["step1"]["apply_class"]);
     } else {
