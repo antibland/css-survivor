@@ -8,13 +8,17 @@ $sky-blue: #00b4ff;
 
 body {
   overflow: hidden;
+  min-height: 100vh;
 }
 
-h1, h2, p {
-  font-family: 'Titillium Web', sans-serif;
+h1,
+h2,
+p {
+  font-family: "Titillium Web", sans-serif;
 }
 
-h2, p {
+h2,
+p {
   margin-bottom: 0.25em;
 }
 
@@ -36,8 +40,6 @@ section:not(.active) {
 }
 
 .container {
-  height: 100vh;
-  min-width: 600px;
   display: flex;
   flex-direction: column;
 
@@ -45,12 +47,14 @@ section:not(.active) {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    align-items: center;
 
     h2 {
       flex-basis: 100%;
     }
 
-    .left, .right {
+    .left,
+    .right {
       flex: 1;
       padding: 0 1em;
     }
@@ -66,8 +70,7 @@ section:not(.active) {
       background-color: rgba(lightgray, 0.2);
       flex: 4;
       align-items: center;
-      box-shadow: 0 3px 3px rgba(0,0,0,0.4);
-      min-height: 155px;
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
       overflow: auto;
     }
 
@@ -83,7 +86,7 @@ section:not(.active) {
 }
 
 .plane {
-  background:transparent url(img/plane.png) 0 50% no-repeat;
+  background: transparent url(img/plane.png) 0 50% no-repeat;
   background-size: 100%;
   width: 311px;
   height: 117px;
@@ -104,7 +107,7 @@ section:not(.active) {
 
 .cloud {
   background: #fff;
-  background: linear-gradient(top,  #fff 5%,#f1f1f1 100%);
+  background: linear-gradient(top, #fff 5%, #f1f1f1 100%);
   border-radius: 100px;
   box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
   height: 120px;
@@ -114,7 +117,7 @@ section:not(.active) {
   &:before,
   &:after {
     background: #fff;
-    content: '';
+    content: "";
     position: absolute;
     z-index: -1;
   }
@@ -136,30 +139,35 @@ section:not(.active) {
   }
 }
 
+.cloud-container {
+  animation-name: animateCloud;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
 
 .x1 {
-  animation: animateCloud 35s linear infinite;
-  transform: scale(0.65);
+  animation-duration: 35s;
+  --cloud-scale: 0.65;
 }
 
 .x2 {
-  animation: animateCloud 20s linear infinite;
-  transform: scale(0.3);
+  animation-duration: 20s;
+  --cloud-scale: 0.3;
 }
 
 .x3 {
-  animation: animateCloud 30s linear infinite;
-  transform: scale(0.5);
+  animation-duration: 30s;
+  --cloud-scale: 0.5;
 }
 
 .x4 {
-  animation: animateCloud 18s linear infinite;
-  transform: scale(0.4);
+  animation-duration: 18s;
+  --cloud-scale: 0.4;
 }
 
 .x5 {
-  animation: animateCloud 25s linear infinite;
-  transform: scale(0.55);
+  animation-duration: 25s;
+  --cloud-scale: 0.55;
 }
 
 ///////////////////
@@ -180,7 +188,6 @@ button {
       animation: shake 1s linear 2 forwards;
     }
   }
-
 }
 
 pre {
@@ -200,15 +207,16 @@ code {
   height: 24px;
   padding: 0.5em 0.25em;
   border: none;
-  font-family: 'Source Code Pro', monospace;
+  font-family: "Source Code Pro", monospace;
   font-size: 16px;
   outline: none;
   resize: none;
   overflow: auto;
 }
 
-.editor, #pre {
-  font-family: 'Source Code Pro', monospace;
+.editor,
+#pre {
+  font-family: "Source Code Pro", monospace;
   font-size: 16px;
   line-height: 1.5;
   color: #aaa;
@@ -230,7 +238,7 @@ code {
   padding: 10px 6px;
   text-align: right;
   background-color: #999;
-  color: #D5D5D5;
+  color: #d5d5d5;
 }
 
 .announcer {
@@ -257,33 +265,38 @@ code {
 
 @keyframes animateCloud {
   0% {
-    margin-left: 1000px;
+    transform: translateX(300%) scale(var(--cloud-scale));
   }
   100% {
-    margin-left: -100%;
+    transform: translateX(-100%) scale(var(--cloud-scale));
   }
 }
 
 @keyframes moveRight {
   to {
-    margin-left: 100vw;
+    transform: translate(500%, calc(-50% - 43px));
   }
 }
 
 @keyframes shake {
-  10%, 90% {
+  10%,
+  90% {
     transform: translate3d(-1px, 0, 0);
   }
 
-  20%, 80% {
+  20%,
+  80% {
     transform: translate3d(2px, 0, 0);
   }
 
-  30%, 50%, 70% {
+  30%,
+  50%,
+  70% {
     transform: translate3d(-4px, 0, 0);
   }
 
-  40%, 60% {
+  40%,
+  60% {
     transform: translate3d(4px, 0, 0);
   }
 }

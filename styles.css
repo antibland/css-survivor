@@ -4,12 +4,16 @@
   box-sizing: border-box; }
 
 body {
-  overflow: hidden; }
+  overflow: hidden;
+  min-height: 100vh; }
 
-h1, h2, p {
-  font-family: 'Titillium Web', sans-serif; }
+h1,
+h2,
+p {
+  font-family: "Titillium Web", sans-serif; }
 
-h2, p {
+h2,
+p {
   margin-bottom: 0.25em; }
 
 h1 {
@@ -26,17 +30,17 @@ section:not(.active) {
   display: none !important; }
 
 .container {
-  height: 100vh;
-  min-width: 600px;
   display: flex;
   flex-direction: column; }
   .container .columns {
     display: flex;
     flex-wrap: wrap;
-    width: 100%; }
+    width: 100%;
+    align-items: center; }
     .container .columns h2 {
       flex-basis: 100%; }
-    .container .columns .left, .container .columns .right {
+    .container .columns .left,
+    .container .columns .right {
       flex: 1;
       padding: 0 1em; }
   .container > div {
@@ -49,7 +53,6 @@ section:not(.active) {
       flex: 4;
       align-items: center;
       box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
-      min-height: 155px;
       overflow: auto; }
     .container > div.bottom {
       flex: 10;
@@ -84,7 +87,7 @@ section:not(.active) {
   width: 350px; }
   .cloud:before, .cloud:after {
     background: #fff;
-    content: '';
+    content: "";
     position: absolute;
     z-index: -1; }
   .cloud:after {
@@ -100,25 +103,30 @@ section:not(.active) {
     right: 50px;
     top: -90px; }
 
+.cloud-container {
+  animation-name: animateCloud;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite; }
+
 .x1 {
-  animation: animateCloud 35s linear infinite;
-  transform: scale(0.65); }
+  animation-duration: 35s;
+  --cloud-scale: 0.65; }
 
 .x2 {
-  animation: animateCloud 20s linear infinite;
-  transform: scale(0.3); }
+  animation-duration: 20s;
+  --cloud-scale: 0.3; }
 
 .x3 {
-  animation: animateCloud 30s linear infinite;
-  transform: scale(0.5); }
+  animation-duration: 30s;
+  --cloud-scale: 0.5; }
 
 .x4 {
-  animation: animateCloud 18s linear infinite;
-  transform: scale(0.4); }
+  animation-duration: 18s;
+  --cloud-scale: 0.4; }
 
 .x5 {
-  animation: animateCloud 25s linear infinite;
-  transform: scale(0.55); }
+  animation-duration: 25s;
+  --cloud-scale: 0.55; }
 
 button {
   -webkit-appearance: none;
@@ -146,14 +154,15 @@ code {
   height: 24px;
   padding: 0.5em 0.25em;
   border: none;
-  font-family: 'Source Code Pro', monospace;
+  font-family: "Source Code Pro", monospace;
   font-size: 16px;
   outline: none;
   resize: none;
   overflow: auto; }
 
-.editor, #pre {
-  font-family: 'Source Code Pro', monospace;
+.editor,
+#pre {
+  font-family: "Source Code Pro", monospace;
   font-size: 16px;
   line-height: 1.5;
   color: #aaa; }
@@ -173,7 +182,7 @@ code {
   padding: 10px 6px;
   text-align: right;
   background-color: #999;
-  color: #D5D5D5; }
+  color: #d5d5d5; }
 
 .announcer {
   position: absolute;
@@ -190,20 +199,25 @@ code {
 
 @keyframes animateCloud {
   0% {
-    margin-left: 1000px; }
+    transform: translateX(300%) scale(var(--cloud-scale)); }
   100% {
-    margin-left: -100%; } }
+    transform: translateX(-100%) scale(var(--cloud-scale)); } }
 @keyframes moveRight {
   to {
-    margin-left: 100vw; } }
+    transform: translate(500%, calc(-50% - 43px)); } }
 @keyframes shake {
-  10%, 90% {
+  10%,
+  90% {
     transform: translate3d(-1px, 0, 0); }
-  20%, 80% {
+  20%,
+  80% {
     transform: translate3d(2px, 0, 0); }
-  30%, 50%, 70% {
+  30%,
+  50%,
+  70% {
     transform: translate3d(-4px, 0, 0); }
-  40%, 60% {
+  40%,
+  60% {
     transform: translate3d(4px, 0, 0); } }
 
 /*# sourceMappingURL=styles.css.map */
