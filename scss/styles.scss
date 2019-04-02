@@ -265,7 +265,7 @@ code {
 
 @keyframes animateCloud {
   0% {
-    transform: translateX(300%) scale(var(--cloud-scale));
+    transform: translateX(100vw) scale(var(--cloud-scale));
   }
   100% {
     transform: translateX(-100%) scale(var(--cloud-scale));
@@ -274,7 +274,7 @@ code {
 
 @keyframes moveRight {
   to {
-    transform: translate(500%, calc(-50% - 43px));
+    transform: translate(100vw, calc(-50% - 43px));
   }
 }
 
