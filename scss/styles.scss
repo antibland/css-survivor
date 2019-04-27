@@ -72,6 +72,7 @@ section:not(.active) {
       align-items: center;
       box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
       overflow: auto;
+      max-height: 40vh;
     }
 
     &.bottom {
@@ -95,6 +96,7 @@ section:not(.active) {
   left: 0;
   transition: 2s 1s, transform ease-out;
   transform: translate(-100%, calc(-50% - 43px));
+  z-index: 2;
 
   .move-on-screen & {
     transform: translate(0, calc(-50% - 43px));
@@ -103,6 +105,41 @@ section:not(.active) {
   &.step-one-answer {
     animation: moveRight 3s linear forwards;
   }
+}
+
+#level-1:target ~ .container .bottom::after,
+#level-1:target ~ .container .bottom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+#level-1:target ~ .container .bottom::before {
+  opacity: 0.5;
+  background-position: 100vw 0;
+  background-size: 40%;
+  background-image: url("https://image.flaticon.com/icons/svg/430/430470.svg");
+  animation-name: blow-wind1;
+  animation-duration: 1s;
+}
+
+#level-1:target ~ .container .bottom::after {
+  opacity: 0.6;
+  background-size: 10%;
+  background-position: 100vw 50%;
+  background-image: url("https://image.flaticon.com/icons/svg/67/67848.svg");
+  animation-name: blow-wind2;
+  animation-duration: 0.9s;
+  animation-delay: 0.25s;
 }
 
 .cloud {
@@ -263,6 +300,18 @@ code {
 // Animations //
 ///////////////
 
+@keyframes blow-wind1 {
+  to {
+    background-position: 80vw 0;
+  }
+}
+
+@keyframes blow-wind2 {
+  to {
+    background-position: 90vw 50%;
+  }
+}
+
 @keyframes animateCloud {
   0% {
     transform: translateX(100vw) scale(var(--cloud-scale));
@@ -298,5 +347,19 @@ code {
   40%,
   60% {
     transform: translate3d(4px, 0, 0);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .container {
+    & > div {
+      flex-direction: column;
+    }
+    .columns {
+      display: block;
+    }
+    .columns .editor {
+      padding-bottom: 1em;
+    }
   }
 }
